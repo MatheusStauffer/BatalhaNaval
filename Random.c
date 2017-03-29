@@ -14,18 +14,13 @@ se tal elemento da matriz estah ou nao ocupado por algum pedaço de embar-
 caçao. Isso facilitaria o retorno de informaçoes - para verificar se o tiro
 dado acertou, e no que acertou.*/
 
-void GeraMatriz(BN* p, int* m, int* n){
+void GeraMatriz(BN** p, int m, int n){
 	int i, j;
 
-	printf("Informe o numero de linhas da sua matriz: \n");
-	scanf("%d", m);
-	printf("Informe o numero de colunas da sua matriz: \n");
-	scanf("%d", n);
-
-	p = (BN **)malloc ((*m)*sizeof(BN*));
-	for (i = 0; i < *m; ++i){
-		p[i] = (BN*)malloc((*n)*sizeof(BN));
-		for (j = 0; j < *n; ++j){
+	p = (BN **)malloc ((m)*sizeof(BN*));
+	for (i = 0; i < m; ++i){
+		p[i] = (BN*)malloc((n)*sizeof(BN));
+		for (j = 0; j < n; ++j){
 			p[i][j].valor = 0;
 			p[i][j].ocupado = 0;
 			/*No inicio, eh feita uma matriz nula - 0 indicaria agua.
@@ -36,8 +31,8 @@ void GeraMatriz(BN* p, int* m, int* n){
 		}
 	}
 	printf("Sua matriz eh:\n");
-	for (i = 0; i < *m; ++i){
-		for (j = 0; j < *n; ++j){
+	for (i = 0; i < m; ++i){
+		for (j = 0; j < n; ++j){
 			printf("%d\t", p[i][j].valor);
 		}
 		printf("\n");
@@ -45,12 +40,12 @@ void GeraMatriz(BN* p, int* m, int* n){
 
 }
 
-void Randomizar(BN* p, int * m, int * n){
+void Randomizar(BN** p, int m, int n){
 	
 	int sementei, sementej, barco, direcao;
 
 	srand(time(NULL));
-	sementei = rand() % (*m + 1);
+	sementei = rand() % (m + 1);
 	/*Semente seria um valor aleatorio para uma coordenada x, que
 	posteriormente serah preenchido por uma embarcaçao que tambem
 	serah sorteada, com a variavel barco. Gerando uma coordenada
@@ -67,7 +62,7 @@ void Randomizar(BN* p, int * m, int * n){
 	se tal ponto jah estah ocupado, fazendo uso do parametro da
 	struct.*/
 
-	sementej = rand() % (*n + 1);
+	sementej = rand() % (n + 1);
 	/*Vale lembrar que, no caso de cada coordenada, os limites dos
 	valores sorteados sao dados pelas dimensoes da matriz gerada.*/
 
@@ -96,15 +91,21 @@ void Randomizar(BN* p, int * m, int * n){
 }
 
 int main(){
-	BN** p;
-	int* m;
-	int* n;
+	BN** p = 0;
+	int m;
+	int n;
 	int i;
+    
+    printf("Informe o numero de linhas da sua matriz: \n");
+	scanf("%d", &m);
+	printf("Informe o numero de colunas da sua matriz: \n");
+	scanf("%d", &n);
+    
+	GeraMatriz(p, m, n);
+    
+	Randomizar(p, m, n); 
 
-	GeraMatriz(&p, m, n);
-	Randomizar(&p, m, n); 
-
-	for (i = 0; i < *m; ++i){
+	for (i = 0; i < m; ++i){
 		free(p[i]);
 	}
 	free(p);
