@@ -415,7 +415,10 @@ int main(){
 	}
 
 	Pipoco(&x, &y);
-	PearlHarbor(mat, x, y);
+	PearlHarbor(mat, (x-1), (y-1));
+	\*As variáveis x e y recebem as coordenadas do tiro. As pessoas, em
+	geral, informam numeros de 1 a 10, enquanto a matriz é indexada de 0 a 9.
+	Por isso, x-1 e y-1*\
 
 	return 0;
 }
