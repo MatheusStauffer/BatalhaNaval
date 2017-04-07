@@ -30,7 +30,7 @@ void GeraMatriz(BN mat[][10]){
 		}
 	}
 }
-
+ 
 void Randomizar(BN mat[][10], int* blocupados){
 	int i;
 	int sementei, sementej, direcao;
