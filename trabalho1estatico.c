@@ -1,3 +1,16 @@
+/*
+Universidade de Brasilia
+Instituto de Ciencias Exatas
+Departamento de Ciencia da Computacao
+Estrutura de Dados 1/2017
+Alunos: Matheus Stauffer Viana de Oliveira e Rafael Frade Leão
+Matricula: 16/0071852 e 15/0145527
+Turma: B
+Versão do compilador: gcc (SUSE Linux) 6.1.1 20160707 [gcc-6-branch revision 238088]
+Copyright (C) 2016 Free Software Foundation, Inc.
+Descricao: O programa a seguir é o melhor jogo de Batalha Naval que o leitor já jogará na vida.
+Foi baseado em uma matriz de structs, e é modularizado em diversas funções.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
